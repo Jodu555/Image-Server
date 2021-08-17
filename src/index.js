@@ -10,13 +10,20 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(express.json());
 
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ dest: 'uploads/' });
 app.post('/file', upload.single('d'), (req, res) => {
-    console.log(req.file);
     res.send({
         success: true,
     });
 });
+
+const upload2 = multer({ dest: 'uploads/' })
+app.post('/url', upload2.single('test'), (req, res) => {
+    console.log(req.body);
+    res.send({
+        success: true,
+    });
+})
 
 
 const PORT = process.env.PORT || 3100;
