@@ -17,9 +17,15 @@ app.post('/file', upload.single('d'), (req, res) => {
     });
 });
 
-const upload2 = multer({ dest: 'uploads/' })
-app.post('/url', upload2.single('test'), (req, res) => {
-    console.log(req.body);
+app.post('/url', (req, res) => {
+    console.log(req.body.url);
+    res.send({
+        success: true,
+    });
+})
+
+app.post('/text', (req, res) => {
+    console.log(req.body.text);
     res.send({
         success: true,
     });
